@@ -240,14 +240,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Download buttons
   document.querySelectorAll('.action-button.download').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const title = btn.closest('.track-card')?.querySelector('.track-title')?.textContent || 'Track';
-      showNotification(`⬇ Downloading: ${title}`, 'download');
-      btn.classList.add('downloading');
-      setTimeout(() => btn.classList.remove('downloading'), 400);
-    });
+    const link = btn.closest('a');
+    if (link) {
+      link.setAttribute('download', '');
+      
+      if (link.href.includes('github.com') && !link.href.includes('raw.githubusercontent.com')) {
+        link.href = link.href
+          .replace('github.com', 'raw.githubusercontent.com')
+          .replace('/blob/', '/');
+      }
+      
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const title = btn.closest('.track-card')?.querySelector('.track-title')?.textContent || 'Track';
+        showNotification(`⬇ Downloading: ${title}`, 'download');
+        btn.classList.add('downloading');
+        setTimeout(() => btn.classList.remove('downloading'), 400);
+      });
+    }
   });
 
   // INTERSECTION OBSERVERS
