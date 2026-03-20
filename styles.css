@@ -449,7 +449,7 @@ body {
 }
 
 .album-card {
-  background: var(--gradient-pink);
+  background: var(--gradient-cyan);
   padding: 2.5rem;
   border-radius: var(--radius-2xl);
   color: var(--light);
@@ -504,7 +504,7 @@ body {
   right: 1.5rem;
   width: 4.375rem;
   height: 4.375rem;
-  background: var(--gradient-cyan);
+  background: var(--gradient-pink);
   border: none;
   border-radius: 50%;
   color: var(--light);
