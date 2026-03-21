@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.section').forEach(section => {
+  document.querySelectorAll('.section:not(.discography)').forEach(section => {
     section.style.opacity = '0';
     section.style.transform = 'translateY(20px)';
     section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
